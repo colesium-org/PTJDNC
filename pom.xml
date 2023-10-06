@@ -49,6 +49,11 @@
             <version>24.0.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>0.25.1</version>
+        </dependency>
     </dependencies>
 
 </project>

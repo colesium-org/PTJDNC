@@ -1,6 +1,7 @@
 package org.crayne.metacolor.api;
 
 import com.google.common.primitives.Bytes;
+import net.kyori.adventure.text.Component;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 import org.crayne.metacolor.api.color.MetaColor;
@@ -13,7 +14,7 @@ import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.util.*;
 
-public class MetaNameColor {
+public class MetaNameColor implements MetaColorLike {
 
     @NotNull
     private final MetaColor color;
@@ -36,8 +37,18 @@ public class MetaNameColor {
         return decoration;
     }
 
+    @NotNull
+    public Component stylize(@NotNull final Component component) {
+        return decoration.stylize(color.stylize(component));
+    }
+
+    @NotNull
+    public Component stylize(@NotNull final String s) {
+        return stylize(Component.text(s));
+    }
+
     public byte @NotNull [] encode() {
-        return Bytes.concat(new byte[] {decoration.encode()}, color.encode());
+        return Bytes.concat(decoration.encode(), color.encode());
     }
 
     @NotNull
@@ -45,9 +56,11 @@ public class MetaNameColor {
         if (encoded.length == 0) return Optional.empty();
         final byte decorationStringEncoded = encoded[offset];
 
-        final Optional<Pair<MetaColor, Integer>> color = MetaColor.decode(encoded, offset + 1);
         final Optional<MetaDecoration> decoration = MetaDecoration.decode(decorationStringEncoded);
-        if (color.isEmpty() || decoration.isEmpty()) return Optional.empty();
+        if (decoration.isEmpty()) return Optional.empty();
+
+        final Optional<Pair<MetaColor, Integer>> color = MetaColor.decode(decoration.get(), encoded, offset + 1);
+        if (color.isEmpty()) return Optional.empty();
 
         return Optional.of(Pair.of(new MetaNameColor(color.get().getKey(), decoration.get()), color.get().getValue()));
     }

@@ -1,15 +1,15 @@
 package org.crayne.metacolor.api.color.namecolor;
 
 import net.kyori.adventure.text.Component;
+import org.crayne.metacolor.api.MetaColorLike;
 import org.crayne.metacolor.api.color.MetaColor;
-import org.crayne.metacolor.api.color.RGB;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class AlternatingMetaColor extends MetaColor {
 
-    public AlternatingMetaColor(@NotNull final List<RGB> colors) {
+    public AlternatingMetaColor(@NotNull final List<? extends MetaColorLike> colors) {
         super(colors);
     }
 
@@ -20,14 +20,10 @@ public class AlternatingMetaColor extends MetaColor {
 
         for (int i = 0; i < string.length(); i++) {
             final char character = string.charAt(i);
-            final RGB color = colors().get(i % colors().size());
-            result = result.append(color.colorize(character));
+            final MetaColorLike color = colors().get(i % colors().size());
+            result = result.append(color.stylize(character));
         }
         return result;
-    }
-
-    public byte nameColorCode() {
-        return 2;
     }
 
     @NotNull

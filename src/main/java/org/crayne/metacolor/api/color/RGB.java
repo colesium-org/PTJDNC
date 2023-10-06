@@ -2,9 +2,12 @@ package org.crayne.metacolor.api.color;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.crayne.metacolor.api.MetaColorLike;
 import org.jetbrains.annotations.NotNull;
 
-public class RGB {
+import java.awt.*;
+
+public class RGB implements MetaColorLike {
 
     private final int r, g, b;
 
@@ -37,6 +40,11 @@ public class RGB {
     }
 
     @NotNull
+    public Component stylize(@NotNull final String s) {
+        return colorize(s);
+    }
+
+    @NotNull
     public Component colorize(final char character) {
         return colorize(Component.text(character));
     }
@@ -44,6 +52,11 @@ public class RGB {
     @NotNull
     public Component colorize(@NotNull final Component component) {
         return component.color(textColor());
+    }
+
+    @NotNull
+    public Component stylize(@NotNull final Component component) {
+        return colorize(component);
     }
 
     @NotNull
@@ -62,6 +75,11 @@ public class RGB {
     @NotNull
     public static RGB of(final int r, final int g, final int b) {
         return new RGB(r, g, b);
+    }
+
+    @NotNull
+    public static RGB of(@NotNull final Color color) {
+        return of(color.getRed(), color.getGreen(), color.getBlue());
     }
 
     public String toString() {

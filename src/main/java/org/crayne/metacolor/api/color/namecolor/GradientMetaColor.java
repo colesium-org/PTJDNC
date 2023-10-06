@@ -24,8 +24,8 @@ public class GradientMetaColor extends MetaColor {
         final int individualStringLength = (length + (length % flagColors)) / flagColors;
 
         for (int i = 0; i < flagColors; i++) {
-            final RGB color = colors().get(i);
-            final RGB nextColor = colors().get(i + 1);
+            final RGB color = (RGB) colors().get(i);
+            final RGB nextColor = (RGB) colors().get(i + 1);
 
             for (int j = i * individualStringLength; j < Math.min(length, (i + 1) * individualStringLength); j++) {
                 final double step = (double) j / (double) length;
@@ -33,10 +33,6 @@ public class GradientMetaColor extends MetaColor {
             }
         }
         return result;
-    }
-
-    public byte nameColorCode() {
-        return 4;
     }
 
     @NotNull

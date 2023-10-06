@@ -1,15 +1,15 @@
 package org.crayne.metacolor.api.color.namecolor;
 
 import net.kyori.adventure.text.Component;
+import org.crayne.metacolor.api.MetaColorLike;
 import org.crayne.metacolor.api.color.MetaColor;
-import org.crayne.metacolor.api.color.RGB;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class FlagMetaColor extends MetaColor {
 
-    public FlagMetaColor(@NotNull final List<RGB> colors) {
+    public FlagMetaColor(@NotNull final List<? extends MetaColorLike> colors) {
         super(colors);
     }
 
@@ -23,16 +23,12 @@ public class FlagMetaColor extends MetaColor {
         final int individualStringLength = (length + (length % colors)) / colors;
 
         for (int i = 0; i < colors; i++) {
-            final RGB color = colors().get(i);
+            final MetaColorLike color = colors().get(i);
             final String flagStringPart = string.substring(i * individualStringLength, Math.min(length, (i + 1) * individualStringLength));
-            result = result.append(color.colorize(flagStringPart));
+            result = result.append(color.stylize(flagStringPart));
         }
 
         return result;
-    }
-
-    public byte nameColorCode() {
-        return 3;
     }
 
     @NotNull

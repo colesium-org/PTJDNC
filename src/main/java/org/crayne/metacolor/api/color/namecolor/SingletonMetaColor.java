@@ -1,6 +1,7 @@
 package org.crayne.metacolor.api.color.namecolor;
 
 import net.kyori.adventure.text.Component;
+import org.crayne.metacolor.api.MetaColorLike;
 import org.crayne.metacolor.api.color.MetaColor;
 import org.crayne.metacolor.api.color.RGB;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class SingletonMetaColor extends MetaColor {
 
-    public SingletonMetaColor(@NotNull final List<RGB> colors) {
+    public SingletonMetaColor(@NotNull final List<? extends MetaColorLike> colors) {
         super(colors);
         if (colors.size() != 1) throw new IllegalArgumentException();
     }
@@ -21,16 +22,12 @@ public class SingletonMetaColor extends MetaColor {
 
     @NotNull
     public Component colorize(@NotNull final String string) {
-        return Component.text(string).color(color().textColor());
+        return color().stylize(string);
     }
 
     @NotNull
-    public RGB color() {
+    public MetaColorLike color() {
         return colors().get(0);
-    }
-
-    public byte nameColorCode() {
-        return 1;
     }
 
     @NotNull

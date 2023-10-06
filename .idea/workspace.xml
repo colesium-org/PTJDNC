@@ -9,28 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/metacolor_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaNameColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/MetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/RGB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/AlternatingMetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/EmptyMetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/FlagMetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/GradientMetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/SingletonMetaColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/style/MetaDecoration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="api">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaColorLike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/MetaParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/palette/MetaPalette.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/ptjd/MetaPTJDPalette.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/ptjd/MetaPTJDRequirement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/whitelist/MetaWhitelist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorTabCompleter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaNameColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaNameColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/MetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/MetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/RGB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/RGB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/AlternatingMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/AlternatingMetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/EmptyMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/EmptyMetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/FlagMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/FlagMetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/GradientMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/GradientMetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/SingletonMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/SingletonMetaColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/style/MetaDecoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/style/MetaDecoration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -56,6 +57,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2WOFnrBDClVrSZacllyqIkBqjk6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -103,6 +107,14 @@
       <option name="presentableId" value="Default" />
       <updated>1696595920101</updated>
     </task>
+    <task id="LOCAL-00001" summary="api">
+      <created>1696615301366</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696615301366</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,5 +127,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="api" />
+    <option name="LAST_COMMIT_MESSAGE" value="api" />
   </component>
 </project>

@@ -1,0 +1,116 @@
+color_palette:
+  - "amaranth_purple=#AB274F"
+  - "dark_red=#AA0000"
+  - "blood_red=#660000"
+  - "red=#FF5555"
+  - "aero_orange=#FF4F00"
+  - "gold=#FFAA00"
+  - "yellow=#FFFF55"
+  - "peach=#FFE5B4"
+  - "dark_green=#00AA00"
+  - "green=#55FF55"
+  - "myrtle_green=#317873"
+  - "aqua=#55FFFF"
+  - "dark_aqua=#00AAAA"
+  - "zomp=#39A78D"
+  - "pacific_cyan=#1CA9C9"
+  - "dark_blue=#0000AA"
+  - "blue=#5555FF"
+  - "ultramarine=#120A8F"
+  - "denim=#1560BD"
+  - "light_purple=#FF55FF"
+  - "dark_purple=#AA00AA"
+  - "indigo=#4B0082"
+  - "byzantium=#702963"
+  - "hot_pink=#FF69B4"
+  - "cherry_blossom=#FFB7C5"
+  - "white=#FFFFFF"
+  - "dutch_white=#EFDFBB"
+  - "gray=#AAAAAA"
+  - "dark_gray=#555555"
+  - "silver=#C0C0C0"
+  - "black=#000000"
+  - "dark_brown=#4B3621"
+  - "light_brown=#964B00"
+  - "night=#222222"
+
+allow_op_bypass_restrictions: true # op players are able to use every possible setting and color freely
+allow_nc_tab_complete: true # allow people to quickly select their namecolor with tab key
+
+namecolor_command_texts:
+  nc_info_page: "%ncname%&6, you have played for &3%pt% hours&6 and joined on &3%jd%&6 (&3%jdd% days&6 ago).\nAvailable namecolors:\n%nclist%"
+
+# format these like so: color_name=hours_required,days_required
+# for color_name, text decorations like bold, italic, strikethrough, obfuscated and underlined are also possible
+# additionally, text styles such as gradient, alternating and flag can also be used here
+# e.g. for a color like red to be unlocked after 3 hours of playtime and 5 days joindate, it should be configured like so:
+# red=3,5
+# the second possible way to specify the joindate requirement is by writing the date prefixed with a capital D.
+# e.g. dark_aqua=200,D8/13/2023 would make dark_aqua only unlock if the player joined before or on that date (in this case august 13th 2023)
+
+# if the requirements of a color are not specified, it will be always available to anyone (same as setting it to 0,0)
+# if the requirements of a color are negative, the color will be unobtainable unless through other means (whitelist / op)
+# TODO configure new namecolors to be unlockable as well
+playtime_joindate_requirements:
+  # text styles (new, unconfigured for now):
+  - "gradient=-1,-1"
+  - "alternating=-1,-1"
+  - "flag=-1,-1"
+
+  # colors (new colors are unconfigured for now):
+  - "amaranth_purple=-1,-1"
+  - "dark_red=500,70"
+  - "blood_red=-1,-1"
+  - "red=140,0"
+  - "aero_orange=-1,-1"
+  - "gold=15,0"
+  - "yellow=100,0"
+  - "peach=-1,-1"
+  - "dark_green=-1,-1"
+  - "green=-1,-1"
+  - "myrtle_green=-1,-1"
+  - "aqua=356,0"
+  - "dark_aqua=200,D9-13-2023"
+  - "zomp=-1,-1"
+  - "pacific_cyan=-1,-1"
+  - "dark_blue=700,90"
+  - "blue=30,0"
+  - "ultramarine=-1,-1"
+  - "denim=-1,-1"
+  - "light_purple=-1,-1"
+  - "dark_purple=60,0"
+  - "indigo=-1,-1"
+  - "byzantium=-1,-1"
+  - "hot_pink=-1,-1"
+  - "cherry_blossom=-1,-1"
+  - "white=1,0"
+  - "dutch_white=-1,-1"
+  - "gray=0,0"
+  - "dark_gray=0,100"
+  - "silver=-1,-1"
+  - "black=-1,-1"
+  - "dark_brown=-1,-1"
+  - "light_brown=-1,-1"
+  - "night=-1,-1"
+
+  # text decorations:
+  - "bold=356,50"
+  - "underlined=-1,-1"
+  - "italic=0,D8-20-2023"
+  - "strikethrough=-1,-1"
+  - "obfuscated=-1,-1"
+
+whitelists:
+  cool_people:
+
+    # text decorations can be used here
+    color_palette:
+      - "light_purple"
+      - "italic"
+      - "underlined"
+      - "dark_aqua"
+
+    # any people on this whitelist will have access to the above listed colors, no matter their playtime or joindate or op status
+    whitelisted_users:
+      - "dc596807-4124-4946-a15c-57172943feff"
+      - "6d5453d0-9336-4801-9392-d8cf5e4136e2"

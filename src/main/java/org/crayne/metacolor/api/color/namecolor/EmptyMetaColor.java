@@ -17,10 +17,6 @@ public class EmptyMetaColor extends MetaColor {
         return Component.text(string);
     }
 
-    public byte nameColorCode() {
-        return 0;
-    }
-
     @NotNull
     public String toString() {
         return "EmptyMetaColor";
