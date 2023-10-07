@@ -16,6 +16,7 @@ public class GradientMetaColor extends MetaColor {
     @NotNull
     public Component colorize(@NotNull final String string) {
         if (colors().isEmpty() || string.isBlank()) return Component.text(string);
+        if (colors().size() == 1) return colors().get(0).stylize(Component.text(string));
         final int length = string.length();
         final int colors = colors().size();
 
@@ -27,8 +28,9 @@ public class GradientMetaColor extends MetaColor {
             final RGB color = (RGB) colors().get(i);
             final RGB nextColor = (RGB) colors().get(i + 1);
 
-            for (int j = i * individualStringLength; j < Math.min(length, (i + 1) * individualStringLength); j++) {
-                final double step = (double) j / (double) length;
+            final int end = i + 1 == flagColors ? length : Math.min(length, (i + 1) * individualStringLength);
+            for (int j = i * individualStringLength; j < end; j++) {
+                final double step = (double) (j - i * individualStringLength + (i == 0 ? 0 : 1)) / (double) (end  - i * individualStringLength);
                 result = result.append(color.interpolate(step, nextColor).colorize(string.charAt(j)));
             }
         }

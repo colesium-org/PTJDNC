@@ -5,8 +5,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.crayne.metacolor.api.MetaColorLike;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.*;
 
 public class MetaDecoration implements MetaColorLike {
 
@@ -50,6 +49,54 @@ public class MetaDecoration implements MetaColorLike {
                 .filter(this::hasDecoration)
                 .toList()
                 .toArray(new TextDecoration[0]);
+    }
+
+    @NotNull
+    public static MetaDecoration combine(@NotNull final Collection<MetaDecoration> decorations) {
+        final Builder builder = new Builder();
+        decorations.forEach(builder::copyAllTrueValues);
+        return builder.create();
+    }
+
+    @NotNull
+    public List<String> colors() {
+        final List<String> colors = new ArrayList<>();
+        if (bold) colors.add("bold");
+        if (italic) colors.add("italic");
+        if (strikethrough) colors.add("strikethrough");
+        if (underlined) colors.add("underlined");
+        if (obfuscated) colors.add("obfuscated");
+        if (gradient) colors.add("gradient");
+        if (flag) colors.add("flag");
+        if (alternating) colors.add("alternating");
+
+        return colors;
+    }
+
+    @NotNull
+    public static MetaDecoration none() {
+        return new MetaDecoration.Builder().create();
+    }
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public boolean hasSpecialDecorators() {
+        return gradient || flag || alternating;
+    }
+
+    public boolean hasUncombinableGradient() {
+        return gradient && (flag || alternating);
+    }
+
+    public boolean hasUncombinableFlag() {
+        return flag && (gradient || alternating);
+    }
+
+    public boolean hasUncombinableAlternating() {
+        return alternating && (flag || gradient);
+    }
+
+    public boolean hasInvalidCombinations() {
+        return hasUncombinableGradient() || hasUncombinableFlag() || hasUncombinableAlternating();
     }
 
     public byte @NotNull [] encode() {
@@ -125,9 +172,31 @@ public class MetaDecoration implements MetaColorLike {
 
         public Builder() {}
 
+        public Builder(@NotNull final MetaDecoration decoration) {
+            this.bold = decoration.bold;
+            this.italic = decoration.italic;
+            this.strikethrough = decoration.strikethrough;
+            this.underlined = decoration.underlined;
+            this.obfuscated = decoration.obfuscated;
+            this.gradient = decoration.gradient;
+            this.flag = decoration.flag;
+            this.alternating = decoration.alternating;
+        }
+
         @NotNull
         public MetaDecoration create() {
             return new MetaDecoration(bold, italic, strikethrough, underlined, obfuscated, gradient, flag, alternating);
+        }
+
+        public void copyAllTrueValues(@NotNull final MetaDecoration decoration) {
+            if (decoration.bold)          bold = true;
+            if (decoration.italic)        italic = true;
+            if (decoration.strikethrough) strikethrough = true;
+            if (decoration.underlined)    underlined = true;
+            if (decoration.obfuscated)    obfuscated = true;
+            if (decoration.gradient)      gradient = true;
+            if (decoration.flag)          flag = true;
+            if (decoration.alternating)   alternating = true;
         }
 
         public boolean bold() {
@@ -224,6 +293,26 @@ public class MetaDecoration implements MetaColorLike {
                     '}';
         }
 
+    }
+
+    public boolean undecorated() {
+        return equals(none());
+    }
+
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        final MetaDecoration that = (MetaDecoration) o;
+
+        if (bold != that.bold) return false;
+        if (italic != that.italic) return false;
+        if (strikethrough != that.strikethrough) return false;
+        if (underlined != that.underlined) return false;
+        if (obfuscated != that.obfuscated) return false;
+        if (gradient != that.gradient) return false;
+        if (flag != that.flag) return false;
+        return alternating == that.alternating;
     }
 
     @NotNull

@@ -36,9 +36,17 @@ color_palette:
 
 allow_op_bypass_restrictions: true # op players are able to use every possible setting and color freely
 allow_nc_tab_complete: true # allow people to quickly select their namecolor with tab key
+max_namecolor_combinations: 3 # this can be 255 at most, any larger will not work (this is only usable if gradient, flag or alternating is accessible)
+default_namecolor: "gray" # this uses the same syntax as the /nc command. adding decorations is possible like so: gray italic bold (for example)
 
 namecolor_command_texts:
   nc_info_page: "%ncname%&6, you have played for &3%pt% hours&6 and joined on &3%jd%&6 (&3%jdd% days&6 ago).\nAvailable namecolors:\n%nclist%"
+  nc_unknown_color: "&cUnknown namecolor '&4%unknownnc%&c'. Use /nc for a full list of available namecolors."
+  nc_invalid_deco_combos: "&cCannot combine decorations such as gradient, flag or alternating. Only one of the three can be picked."
+  nc_invalid_color_amount: "&cCannot use more than %maxnc% namecolors."
+  nc_invalid_color_amount_access_special_deco: "&cCannot use more than one namecolor. Use a combining modifier to use multiple colors."
+  nc_invalid_color_amount_noaccess_special_deco: "&cCannot use more than one namecolor."
+  nc_changed: "&6Your namecolor was changed: &r%ncname%"
 
 # format these like so: color_name=hours_required,days_required
 # for color_name, text decorations like bold, italic, strikethrough, obfuscated and underlined are also possible
@@ -50,7 +58,6 @@ namecolor_command_texts:
 
 # if the requirements of a color are not specified, it will be always available to anyone (same as setting it to 0,0)
 # if the requirements of a color are negative, the color will be unobtainable unless through other means (whitelist / op)
-# TODO configure new namecolors to be unlockable as well
 playtime_joindate_requirements:
   # text styles (new, unconfigured for now):
   - "gradient=-1,-1"

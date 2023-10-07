@@ -7,8 +7,8 @@ import org.crayne.metacolor.api.style.MetaDecoration;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 public class MetaPalette {
 
@@ -23,21 +23,19 @@ public class MetaPalette {
 
     public MetaPalette() {
         this.colorPalette = new LinkedHashMap<>();
-        this.decorationPalette = new LinkedHashMap<>(TEXT_DECORATION_KEYS);
+        this.decorationPalette = new LinkedHashMap<>();
+
+        this.decorationPalette.put("bold",          new MetaDecoration.Builder().bold(true).create());
+        this.decorationPalette.put("italic",        new MetaDecoration.Builder().italic(true).create());
+        this.decorationPalette.put("strikethrough", new MetaDecoration.Builder().strikethrough(true).create());
+        this.decorationPalette.put("underlined",    new MetaDecoration.Builder().underlined(true).create());
+        this.decorationPalette.put("obfuscated",    new MetaDecoration.Builder().obfuscated(true).create());
+        this.decorationPalette.put("gradient",      new MetaDecoration.Builder().gradient(true).create());
+        this.decorationPalette.put("flag",          new MetaDecoration.Builder().flag(true).create());
+        this.decorationPalette.put("alternating",   new MetaDecoration.Builder().alternating(true).create());
+
         this.keys = new ArrayList<>();
     }
-
-    @NotNull
-    private static final Map<String, MetaDecoration> TEXT_DECORATION_KEYS = Map.of(
-            "bold",          new MetaDecoration.Builder().bold(true).create(),
-            "italic",        new MetaDecoration.Builder().italic(true).create(),
-            "strikethrough", new MetaDecoration.Builder().strikethrough(true).create(),
-            "underlined",    new MetaDecoration.Builder().underlined(true).create(),
-            "obfuscated",    new MetaDecoration.Builder().obfuscated(true).create(),
-            "gradient",      new MetaDecoration.Builder().gradient(true).create(),
-            "flag",          new MetaDecoration.Builder().flag(true).create(),
-            "alternating",   new MetaDecoration.Builder().alternating(true).create()
-    );
 
     public void load() {
         keys.clear();
