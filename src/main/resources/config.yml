@@ -59,33 +59,33 @@ namecolor_command_texts:
 # if the requirements of a color are not specified, it will be always available to anyone (same as setting it to 0,0)
 # if the requirements of a color are negative, the color will be unobtainable unless through other means (whitelist / op)
 playtime_joindate_requirements:
-  # text styles (new, unconfigured for now):
+  # text styles:
   - "gradient=-1,-1"
   - "alternating=-1,-1"
   - "flag=-1,-1"
 
-  # colors (new colors are unconfigured for now):
+    # colors:
   - "amaranth_purple=-1,-1"
   - "dark_red=500,70"
-  - "blood_red=-1,-1"
-  - "red=140,0"
-  - "aero_orange=-1,-1"
-  - "gold=15,0"
-  - "yellow=100,0"
+  - "blood_red=1000,100"
+  - "red=20,0"
+  - "aero_orange=200,60"
+  - "gold=10,0"
+  - "yellow=30,0"
   - "peach=-1,-1"
   - "dark_green=-1,-1"
   - "green=-1,-1"
   - "myrtle_green=-1,-1"
-  - "aqua=356,0"
+  - "aqua=70,0"
   - "dark_aqua=200,D9-13-2023"
   - "zomp=-1,-1"
   - "pacific_cyan=-1,-1"
-  - "dark_blue=700,90"
-  - "blue=30,0"
+  - "dark_blue=100,90"
+  - "blue=5,0"
   - "ultramarine=-1,-1"
   - "denim=-1,-1"
   - "light_purple=-1,-1"
-  - "dark_purple=60,0"
+  - "dark_purple=15,0"
   - "indigo=-1,-1"
   - "byzantium=-1,-1"
   - "hot_pink=-1,-1"
@@ -93,7 +93,7 @@ playtime_joindate_requirements:
   - "white=1,0"
   - "dutch_white=-1,-1"
   - "gray=0,0"
-  - "dark_gray=0,100"
+  - "dark_gray=100,100"
   - "silver=-1,-1"
   - "black=-1,-1"
   - "dark_brown=-1,-1"
@@ -101,7 +101,7 @@ playtime_joindate_requirements:
   - "night=-1,-1"
 
   # text decorations:
-  - "bold=356,50"
+  - "bold=40,50"
   - "underlined=-1,-1"
   - "italic=0,D8-20-2023"
   - "strikethrough=-1,-1"

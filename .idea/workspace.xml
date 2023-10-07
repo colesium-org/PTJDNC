@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="api changes and finished plugin">
+    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="fixed missing letters in flag nc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696682355615</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed missing letters in flag nc">
+      <created>1696694144125</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696694144125</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +132,7 @@
     <MESSAGE value="api" />
     <MESSAGE value="api changes and started work on actual plugin" />
     <MESSAGE value="api changes and finished plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="api changes and finished plugin" />
+    <MESSAGE value="fixed missing letters in flag nc" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed missing letters in flag nc" />
   </component>
 </project>
