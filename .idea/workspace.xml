@@ -9,15 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="api changes and started work on actual plugin">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/event/PlayerJoinEventListener.java" afterDir="false" />
+    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="api changes and finished plugin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/GradientMetaColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/color/namecolor/GradientMetaColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/palette/MetaPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/palette/MetaPalette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/style/MetaDecoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/style/MetaDecoration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorTabCompleter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorTabCompleter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696633952462</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="api changes and finished plugin">
+      <created>1696682355615</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696682355615</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +125,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="api" />
     <MESSAGE value="api changes and started work on actual plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="api changes and started work on actual plugin" />
+    <MESSAGE value="api changes and finished plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="api changes and finished plugin" />
   </component>
 </project>

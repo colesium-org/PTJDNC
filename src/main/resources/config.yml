@@ -121,3 +121,13 @@ whitelists:
     whitelisted_users:
       - "dc596807-4124-4946-a15c-57172943feff"
       - "6d5453d0-9336-4801-9392-d8cf5e4136e2"
+
+  other_cool_people:
+    color_palette:
+      - "black"
+      - "dark_red"
+      - "gold"
+      - "flag"
+
+    whitelisted_users:
+      - "06f1e451-cb6d-4ef9-a377-ca8a593dffeb"

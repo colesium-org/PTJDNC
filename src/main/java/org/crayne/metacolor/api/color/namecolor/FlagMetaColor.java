@@ -24,7 +24,7 @@ public class FlagMetaColor extends MetaColor {
 
         for (int i = 0; i < colors; i++) {
             final MetaColorLike color = colors().get(i);
-            final String flagStringPart = string.substring(i * individualStringLength, Math.min(length, (i + 1) * individualStringLength));
+            final String flagStringPart = string.substring(i * individualStringLength, i + 1 == colors ? length : Math.min(length, (i + 1) * individualStringLength));
             result = result.append(color.stylize(flagStringPart));
         }
 
