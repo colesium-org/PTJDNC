@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class MetaColorTabCompleter implements TabCompleter {
 
@@ -32,20 +33,45 @@ public class MetaColorTabCompleter implements TabCompleter {
                 .toList();
     }
 
-    @Nullable
-    public List<String> onTabComplete(@NotNull final CommandSender commandSender, @NotNull final Command command, @NotNull final String label, @NotNull final String @NotNull [] args) {
-        if (!(commandSender instanceof final Player p)) return null;
-
-        final List<String> argsList = Arrays.stream(args).toList().subList(0, args.length - 1);
-        if (argsList.contains("reset")) return new ArrayList<>();
-        final List<MetaDecoration> decorations = argsList.stream()
+    @NotNull
+    private static List<MetaDecoration> findDecorations(@NotNull final List<String> argsList) {
+        return argsList.stream()
                 .map(s -> MetaColorPlugin.plugin()
                         .colorPalette()
                         .decorationPalette()
                         .get(s))
                 .filter(Objects::nonNull)
                 .toList();
+    }
 
+    private static boolean validateExistingArguments(@NotNull final List<String> argsList, @NotNull final List<String> availableNameColors) {
+        for (int i = 0; i < argsList.size(); i++) {
+            final String s = argsList.get(i);
+            if (s.isBlank()) continue;
+
+            if (s.equals("rgb") && availableNameColors.contains("rgb")) {
+                i += 3;
+                if (i >= argsList.size()) return true;
+                continue;
+            }
+            if (s.equals("hex") && availableNameColors.contains("hex")) {
+                i++;
+                if (i >= argsList.size()) return true;
+                continue;
+            }
+            if (!availableNameColors.contains(s)) return true;
+        }
+        return false;
+    }
+
+    @Nullable
+    public List<String> onTabComplete(@NotNull final CommandSender commandSender, @NotNull final Command command, @NotNull final String label, @NotNull final String @NotNull [] args) {
+        if (!(commandSender instanceof final Player p)) return null;
+
+        final List<String> argsList = Arrays.stream(args).toList().subList(0, args.length - 1);
+        if (argsList.contains("reset")) return new ArrayList<>();
+
+        final List<MetaDecoration> decorations = findDecorations(argsList);
         final MetaDecoration decoration = MetaDecoration.combine(decorations);
 
         final List<String> availableNameColors = new ArrayList<>(MetaColorPlugin.plugin().accessibleNameColors(p));
@@ -53,7 +79,12 @@ public class MetaColorTabCompleter implements TabCompleter {
             availableNameColors.add(0, "reset");
             availableNameColors.addAll(accessibleDecorations(p));
         }
-        if (argsList.stream().filter(s -> !s.isBlank()).anyMatch(s -> !availableNameColors.contains(s))) return new ArrayList<>();
+        final List<String> accessibleCustomNameColors = Stream.of("rgb", "hex").
+                filter(s -> MetaColorPlugin.plugin().nameColorAccessible(p, s))
+                .toList();
+
+        availableNameColors.addAll(accessibleCustomNameColors);
+        if (validateExistingArguments(argsList, availableNameColors)) return new ArrayList<>();
 
         if (argsList.stream().anyMatch(colors()::contains) && !argsList.contains("gradient") && !argsList.contains("flag") && !argsList.contains("alternating"))
             availableNameColors.removeAll(colors());

@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="readme update">
+    <list default="true" id="ccc2e57f-49d9-4910-a1fc-8527dda9f296" name="Changes" comment="added options for hex and rgb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/MetaColorPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaNameColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/MetaNameColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/palette/MetaPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/api/parse/palette/MetaPalette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorTabCompleter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/crayne/metacolor/command/MetaColorTabCompleter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696951366784</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added options for hex and rgb">
+      <created>1697041791249</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697041791249</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +165,7 @@
     <MESSAGE value="config update" />
     <MESSAGE value="config update (made silver brighter)" />
     <MESSAGE value="readme update" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme update" />
+    <MESSAGE value="added options for hex and rgb" />
+    <option name="LAST_COMMIT_MESSAGE" value="added options for hex and rgb" />
   </component>
 </project>
