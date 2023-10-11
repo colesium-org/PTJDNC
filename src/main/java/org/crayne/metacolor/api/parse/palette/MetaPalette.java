@@ -49,6 +49,9 @@ public class MetaPalette {
 
         keys.addAll(colorPalette.keySet());
         keys.addAll(decorationPalette.keySet());
+
+        keys.add("hex");
+        keys.add("rgb");
     }
 
     @NotNull
@@ -68,6 +71,8 @@ public class MetaPalette {
 
     @NotNull
     public Optional<MetaColorLike> findColor(@NotNull final String name) {
+        if (name.equals("rgb") || name.equals("hex")) return Optional.of(RGB.of(Color.LIGHT_GRAY));
+
         if (decorationPalette.containsKey(name)) return Optional.ofNullable(decorationPalette.get(name));
         return Optional.ofNullable(colorPalette.get(name));
     }

@@ -2,7 +2,6 @@ package org.crayne.metacolor;
 
 import net.kyori.adventure.text.Component;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Triple;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -90,16 +89,16 @@ public class MetaColorPlugin extends JavaPlugin {
         final String defaultNameColorSetting = config().getString("default_namecolor");
         if (defaultNameColorSetting == null || defaultNameColorSetting.isBlank()) return;
 
-        final Triple<Optional<Component>, List<MetaColorLike>, MetaDecoration> parsedDefaultNameColor
-                = MetaColorCommand.parseNameColor(defaultNameColorSetting.split(" "), null);
+        final @NotNull MetaColorCommand.NameColorCommandResult parsedDefaultNameColor
+                = MetaColorCommand.parseNameColor(defaultNameColorSetting.split(" "), null, defaultNameColor);
 
-        final Optional<Component> errorMessage = parsedDefaultNameColor.getLeft();
-        if (errorMessage.isPresent()) {
+        final Component errorMessage = parsedDefaultNameColor.message();
+        if (errorMessage != null) {
             getLogger().severe("Could not set default namecolor value. Defaulting to white instead.");
-            Bukkit.getConsoleSender().sendMessage(errorMessage.get());
+            Bukkit.getConsoleSender().sendMessage(errorMessage);
             return;
         }
-        defaultNameColor = MetaColorCommand.nameColorOfParsed(parsedDefaultNameColor.getMiddle(), parsedDefaultNameColor.getRight(), defaultNameColor);
+        defaultNameColor = parsedDefaultNameColor.toMetaNameColor();
     }
 
     public boolean nameColorAccessible(@NotNull final Player player, @NotNull final String colorName) {

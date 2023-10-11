@@ -79,7 +79,12 @@ public class MetaNameColor implements MetaColorLike {
     }
 
     public static void save(@NotNull final Map<UUID, MetaNameColor> nameColorMap, @NotNull final File file) throws IOException {
-        Files.write(file.toPath(), Bytes.concat(nameColorMap.entrySet().stream().map(e -> e.getValue().encodeWithUUID(e.getKey())).toList().toArray(new byte[0][])));
+        Files.write(file.toPath(), Bytes.concat(nameColorMap.entrySet()
+                .stream()
+                .map(e -> e.getValue()
+                        .encodeWithUUID(e.getKey()))
+                .toList()
+                .toArray(new byte[0][])));
     }
 
     @NotNull

@@ -47,10 +47,16 @@ namecolor_command_texts:
   nc_invalid_color_amount_access_special_deco: "&cCannot use more than one namecolor. Use a combining modifier to use multiple colors."
   nc_invalid_color_amount_noaccess_special_deco: "&cCannot use more than one namecolor."
   nc_changed: "&6Your namecolor was changed: &r%ncname%"
+  nc_no_hex_specified: "&cNo hex code was specified. \nUsage: /nc hex #FFFFFF, where #FFFFFF is your hex code."
+  nc_invalid_hex_specified: "&cAn invalid hex code was specified. \nUsage: /nc hex #FFFFFF, where #FFFFFF is your hex code."
+  nc_no_rgb_specified: "&cNot all RGB values were specified. \nUsage: /nc rgb 255 255 255 where the three numbers are your red, green and blue values."
+  nc_invalid_component_specified: "&cAn invalid RGB color component was specified. The RGB values must be between 0 and 255 and they must be integers."
+
 
 # format these like so: color_name=hours_required,days_required
 # for color_name, text decorations like bold, italic, strikethrough, obfuscated and underlined are also possible
 # additionally, text styles such as gradient, alternating and flag can also be used here
+# custom user-defined color options such as 'hex' and 'rgb' may also be added here too
 # e.g. for a color like red to be unlocked after 3 hours of playtime and 5 days joindate, it should be configured like so:
 # red=3,5
 # the second possible way to specify the joindate requirement is by writing the date prefixed with a capital D.
@@ -107,10 +113,14 @@ playtime_joindate_requirements:
   - "strikethrough=-1,-1"
   - "obfuscated=-1,-1"
 
+  - "rgb=-1,-1"
+  - "hex=-1,-1"
+
 whitelists:
   cool_people:
 
     # text decorations can be used here
+    # custom user-defined color options such as 'hex' and 'rgb' may also be added here too
     color_palette:
       - "light_purple"
       - "italic"
