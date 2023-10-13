@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="metacolor:jar">
-    <output-path>$PROJECT_DIR$/../1.19.4 testing/plugins</output-path>
-    <root id="archive" name="metacolor.jar">
-      <element id="module-output" name="metacolor" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>

@@ -1,5 +1,5 @@
-main: org.crayne.metacolor.MetaColorPlugin
-name: MetaColor
+main: org.crayne.ptjdnc.NameColorPlugin
+name: PTJDNC
 version: 1.0
 api-version: 1.19
 description: "namecolor plugin inspired by 0b0t playtime namecolor for newer minecraft versions"

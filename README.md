@@ -1,9 +1,10 @@
-# MetaColor
-Namecolor plugin for 1.19
+# PTJDNC
+Fully configurable playtime + joindate based namecolor plugin for 1.19
 
 In order to get access to any given name color, both the joindate requirement (JD min.) as well as the playtime requirement (PT min.) have to be fulfilled.
 The playtime numbers here are measured in hours, whereas the joindate is either measured in days, or a certain date, where the player must have joined before it.
 
+# Example Configuration on colesium.org
 ## Obtainable Namecolors for everyone
 | color       | PT min. | JD min.      | example                       | hex code |
 |-------------|---------|--------------|-------------------------------|----------|
@@ -30,7 +31,7 @@ The playtime numbers here are measured in hours, whereas the joindate is either 
 | flag       | 2500    | 150          | ![](examples/flag.png)     | /nc flag denim white dark_red   |
 
 ## Donator Namecolors
-Donators of the server may get special perks for namecolor selection, such as additional namecolors not every other player can have, or an instant access to colors that would require some PT or JD.
+Donators of colesium.org may get special perks for namecolor selection, such as additional namecolors not every other player can have, or an instant access to colors that would require some PT or JD.
 
 | color        | example                        | hex code |
 |--------------|--------------------------------|----------|
@@ -43,7 +44,7 @@ Donators of the server may get special perks for namecolor selection, such as ad
 | underlined | ![](examples/underlined.png) |
 
 ## Currently unobtainale Namecolors
-These namecolors are not available to anyone except admins as of currently, but this may change in the future.
+On colesium.org, these namecolors are not available to anyone except admins as of currently, but this may change in the future.
 
 | color           | example                           | hex code |
 |-----------------|-----------------------------------|----------|
