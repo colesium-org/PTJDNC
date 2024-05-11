@@ -24,7 +24,18 @@ public class FlagNameColor extends NameColor {
 
         for (int i = 0; i < colors; i++) {
             final ColorLike color = colors().get(i);
-            final String flagStringPart = string.substring(i * individualStringLength, i + 1 == colors ? length : Math.min(length, (i + 1) * individualStringLength));
+            final int nextIndex = i + 1;
+            final boolean lastPart = nextIndex == colors;
+
+            final int partBegin = i * individualStringLength;
+            if (partBegin >= length) break;
+
+            final int partEnd = lastPart
+                    ? length
+                    : Math.min(length, nextIndex * individualStringLength);
+
+            final String flagStringPart = string.substring(partBegin, partEnd);
+
             result = result.append(color.stylize(flagStringPart));
         }
 
