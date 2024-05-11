@@ -8,3 +8,6 @@ commands:
   namecolor:
     description: "main namecolor command"
     aliases: ["nc"]
+  itemcolor:
+    description: "itemcolor command"
+    aliases: ["ic"]

@@ -6,6 +6,7 @@ import org.crayne.ptjdnc.api.ColorLike;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class NameDecoration implements ColorLike {
 
@@ -25,7 +26,7 @@ public class NameDecoration implements ColorLike {
 
     @NotNull
     public Component decorate(@NotNull final Component component) {
-        return component.decorate(decorations());
+        return component.decorations(decorations());
     }
 
     @NotNull
@@ -44,17 +45,32 @@ public class NameDecoration implements ColorLike {
     }
 
     @NotNull
-    public TextDecoration[] decorations() {
+    public Map<TextDecoration, TextDecoration.State> decorations() {
         return Arrays.stream(TextDecoration.values())
-                .filter(this::hasDecoration)
-                .toList()
-                .toArray(new TextDecoration[0]);
+                .map(d -> Map.entry(d, hasDecoration(d) ? TextDecoration.State.TRUE : TextDecoration.State.FALSE))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     @NotNull
     public static NameDecoration combine(@NotNull final Collection<NameDecoration> decorations) {
         final Builder builder = new Builder();
         decorations.forEach(builder::copyAllTrueValues);
+        return builder.create();
+    }
+
+    @NotNull
+    public NameDecoration reapply(@NotNull final NameDecoration decoration) {
+        final Builder builder = new Builder(this);
+
+        builder.toggleBold(decoration.bold());
+        builder.toggleItalic(decoration.italic());
+        builder.toggleStrikethrough(decoration.strikethrough());
+        builder.toggleUnderlined(decoration.underlined());
+        builder.toggleObfuscated(decoration.obfuscated());
+        builder.toggleGradient(decoration.gradient());
+        builder.toggleFlag(decoration.flag());
+        builder.toggleAlternating(decoration.alternating());
+
         return builder.create();
     }
 
@@ -276,6 +292,54 @@ public class NameDecoration implements ColorLike {
         @NotNull
         public Builder alternating(final boolean alternating) {
             this.alternating = alternating;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleBold(final boolean bold) {
+            this.bold = bold != this.bold;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleItalic(final boolean italic) {
+            this.italic = italic != this.italic;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleStrikethrough(final boolean strikethrough) {
+            this.strikethrough = strikethrough != this.strikethrough;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleUnderlined(final boolean underline) {
+            this.underlined = underline != this.underlined;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleObfuscated(final boolean obfuscated) {
+            this.obfuscated = obfuscated != this.obfuscated;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleGradient(final boolean gradient) {
+            this.gradient = gradient != this.gradient;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleFlag(final boolean flag) {
+            this.flag = flag != this.flag;
+            return this;
+        }
+
+        @NotNull
+        public Builder toggleAlternating(final boolean alternating) {
+            this.alternating = alternating != this.alternating;
             return this;
         }
 

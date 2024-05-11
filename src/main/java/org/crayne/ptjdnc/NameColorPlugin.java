@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.crayne.ptjdnc.api.config.ConfigParseException;
 import org.crayne.ptjdnc.api.profile.GlobalNameStyleProfile;
+import org.crayne.ptjdnc.command.ItemColorCommand;
 import org.crayne.ptjdnc.command.NameColorCommand;
 import org.crayne.ptjdnc.command.NameColorTabCompleter;
 import org.crayne.ptjdnc.event.PlayerOpStatusChangeEvent;
@@ -35,12 +36,21 @@ public class NameColorPlugin extends JavaPlugin {
         GlobalNameStyleProfile.INSTANCE.load();
         getServer().getPluginManager().registerEvents(new PlayerEventListener(), this);
 
+        final NameColorTabCompleter ncTabCompleter = new NameColorTabCompleter();
         Stream.of("namecolor", "nc")
                 .map(this::getCommand)
                 .filter(Objects::nonNull)
                 .forEach(c -> {
                     c.setExecutor(new NameColorCommand());
-                    c.setTabCompleter(new NameColorTabCompleter());
+                    c.setTabCompleter(ncTabCompleter);
+                });
+
+        Stream.of("itemcolor", "ic")
+                .map(this::getCommand)
+                .filter(Objects::nonNull)
+                .forEach(c -> {
+                    c.setExecutor(new ItemColorCommand());
+                    c.setTabCompleter(ncTabCompleter);
                 });
 
         // probably not the best solution for a player op event, but atleast it works? spigot or paper, please add an op event :sob:

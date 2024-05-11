@@ -35,6 +35,11 @@ public class NameStyle implements ColorLike {
     }
 
     @NotNull
+    public NameStyle reapply(@NotNull final NameDecoration decoration) {
+        return new NameStyle(color, this.decoration.reapply(decoration));
+    }
+
+    @NotNull
     public Component stylize(@NotNull final String s) {
         return stylize(Component.text(s));
     }

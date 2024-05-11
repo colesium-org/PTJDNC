@@ -36,6 +36,7 @@ color_palette:
 
 allow_op_bypass_restrictions: true # op players are able to use every possible setting and color freely
 allow_nc_tab_complete: true # allow people to quickly select their namecolor with tab key
+enable_itemcolor: false # allow people to color their items using /ic
 max_namecolor_combinations: 3 # this can be 255 at most, any larger will not work (this is only usable if gradient, flag or alternating is accessible)
 default_namecolor: "gray" # this uses the same syntax as the /nc command. adding decorations is possible like so: gray italic bold (for example)
 
@@ -51,7 +52,9 @@ namecolor_command_texts:
   nc_invalid_hex_specified: "&cAn invalid hex code was specified. \nUsage: /nc hex #FFFFFF, where #FFFFFF is your hex code."
   nc_no_rgb_specified: "&cNot all RGB values were specified. \nUsage: /nc rgb 255 255 255 where the three numbers are your red, green and blue values."
   nc_invalid_component_specified: "&cAn invalid RGB color component was specified. The RGB values must be between 0 and 255 and they must be integers."
-
+  ic_incomplete_color: "&cIncomplete color provided. Please enter a full color to use this command."
+  ic_no_item_held: "&cYou are not holding any item. Ensure your mainhand has the item you want to recolor the name of before using this command."
+  ic_success: "&6Your item's color was changed."
 
 # format these like so: color_name=hours_required,days_required
 # for color_name, text decorations like bold, italic, strikethrough, obfuscated and underlined are also possible

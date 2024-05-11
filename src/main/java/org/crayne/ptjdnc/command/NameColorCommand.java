@@ -33,20 +33,16 @@ import java.util.function.Function;
 public class NameColorCommand implements CommandExecutor {
 
     @NotNull
-    private static final TextColor COLOR_RED = TextColor.color(255, 0, 0);
+    protected static final TextColor COLOR_RED = TextColor.color(255, 0, 0);
 
-    public boolean onCommand(@NotNull final CommandSender commandSender, @NotNull final Command command, @NotNull final String label, @NotNull final String @NotNull [] args) {
+    public boolean onCommand(@NotNull final CommandSender commandSender, @NotNull final Command command,
+                             @NotNull final String label, @NotNull final String @NotNull [] args) {
         if (!(commandSender instanceof final Player p)) {
             commandSender.sendMessage(Component.text("Only players may use this command.").color(COLOR_RED));
             return false;
         }
         if (args.length == 0) {
-            p.sendMessage(deserialize("nc_info_page", s -> s
-                    .replace("%ncname%", displayName(p))
-                    .replace("%pt%", (int) PlaytimeJoindateRequirement.playTimeInHours(p) + "")
-                    .replace("%jd%", PlaytimeJoindateRequirement.joinDateFormatted(p))
-                    .replace("%jdd%", (int) PlaytimeJoindateRequirement.joinDateInDays(p) + "")
-                    .replace("%nclist%", availableNamecolors(p))));
+            sendAvailableColors(p);
             return true;
         }
         final GlobalNameStyleProfile globalNameStyleProfile = GlobalNameStyleProfile.INSTANCE;
@@ -66,6 +62,15 @@ public class NameColorCommand implements CommandExecutor {
         return true;
     }
 
+    protected static void sendAvailableColors(@NotNull final Player p) {
+        p.sendMessage(deserialize("nc_info_page", s -> s
+                .replace("%ncname%", displayName(p))
+                .replace("%pt%", (int) PlaytimeJoindateRequirement.playTimeInHours(p) + "")
+                .replace("%jd%", PlaytimeJoindateRequirement.joinDateFormatted(p))
+                .replace("%jdd%", (int) PlaytimeJoindateRequirement.joinDateInDays(p) + "")
+                .replace("%nclist%", availableNamecolors(p))));
+    }
+
     @NotNull
     private static Component sendNameColorChanged(@NotNull final Player p) {
         return LegacyComponentSerializer.legacyAmpersand().deserialize(
@@ -74,18 +79,62 @@ public class NameColorCommand implements CommandExecutor {
     }
 
     @NotNull
-    public static NameStyle nameColorOfParsed(@NotNull final List<ColorLike> colorsParam, @NotNull final NameDecoration decorationParam, @NotNull final NameStyle defaultNameStyle) {
-        final List<? extends ColorLike> colors = colorsParam.isEmpty() ? defaultNameStyle.color().colors() : colorsParam;
-        final NameDecoration decoration = decorationParam.undecorated() ? defaultNameStyle.decoration() : decorationParam;
+    public static Optional<NameStyle> nameColorOfParsed(@NotNull final List<ColorLike> colorsParam,
+                                                        @NotNull final NameDecoration decorationParam,
+                                                        @Nullable final NameStyle defaultNameStyle) {
+        final List<? extends ColorLike> defaultColors = Optional.ofNullable(defaultNameStyle)
+                .map(NameStyle::color)
+                .map(NameColor::colors)
+                .orElse(null);
 
-        final NameColor nameColor;
-        if (!decoration.hasSpecialDecorators()) nameColor = new SingletonNameColor(colors);
-        else if (decoration.gradient()) nameColor = new GradientNameColor(colors.stream().map(c -> (RGB) c).toList());
-        else if (decoration.flag()) nameColor = new FlagNameColor(colors);
-        else if (decoration.alternating()) nameColor = new AlternatingNameColor(colors);
-        else nameColor = new SingletonNameColor(colors);
+        final Optional<List<? extends ColorLike>> colors = requireOrElse(
+                colorsParam.isEmpty(),
+                defaultColors,
+                colorsParam
+        );
+        if (colors.isEmpty()) return Optional.empty();
 
-        return new NameStyle(nameColor, decoration);
+        final NameDecoration defaultDecoration = Optional.ofNullable(defaultNameStyle)
+                .map(NameStyle::decoration)
+                .orElse(null);
+
+        final NameDecoration decoration = requireOrElse(
+                decorationParam.undecorated(),
+                defaultDecoration,
+                decorationParam
+        ).orElse(NameDecoration.none());
+
+        if (!decoration.hasSpecialDecorators() && colorsParam.isEmpty())
+            return Optional.ofNullable(defaultNameStyle).map(n -> n.reapply(decoration));
+
+        final NameColor nameColor = nameColorOfParsed(decoration, colors.get());
+
+        return Optional.of(new NameStyle(nameColor, decoration));
+    }
+
+    @NotNull
+    public static <R> Optional<R> requireOrElse(final boolean defaultingCondition, @Nullable final R defaultValue,
+                                                @NotNull final R primary) {
+        if (!defaultingCondition) return Optional.of(primary);
+        return Optional.ofNullable(defaultValue);
+    }
+
+    @NotNull
+    public static NameColor nameColorOfParsed(@NotNull final NameDecoration decoration,
+                                              @NotNull final List<? extends ColorLike> colors) {
+        if (!decoration.hasSpecialDecorators())
+            return new SingletonNameColor(colors);
+
+        if (decoration.gradient())
+            return new GradientNameColor(colors.stream().map(c -> (RGB) c).toList());
+
+        if (decoration.flag())
+            return new FlagNameColor(colors);
+
+        if (decoration.alternating())
+            return new AlternatingNameColor(colors);
+
+        return new SingletonNameColor(colors);
     }
 
     public record NameColorCommandResult(@Nullable Component message, @Nullable ColorLike nameColor) {
@@ -214,7 +263,8 @@ public class NameColorCommand implements CommandExecutor {
     }
 
     @NotNull
-    public static NameColorCommandResult parseNameColor(@NotNull final String[] args, @Nullable final Player p, @NotNull final NameStyle defaultNameStyle) {
+    public static NameColorCommandResult parseNameColor(@NotNull final String[] args, @Nullable final Player p,
+                                                        @Nullable final NameStyle defaultNameStyle) {
         final List<ColorLike> colors = new ArrayList<>();
         final List<NameDecoration> decorations = new ArrayList<>();
 
@@ -235,7 +285,9 @@ public class NameColorCommand implements CommandExecutor {
             return deserializeMessage("nc_invalid_color_amount",
                     s -> s.replace("%maxnc%", maxColorCombos + ""));
 
-        return NameColorCommandResult.success(nameColorOfParsed(colors, decoration, defaultNameStyle));
+        final Optional<NameStyle> nameColor = nameColorOfParsed(colors, decoration, defaultNameStyle);
+        return nameColor.map(NameColorCommandResult::success)
+                .orElseGet(() -> deserializeMessage("ic_incomplete_color", s -> s));
     }
 
     @NotNull
@@ -257,7 +309,7 @@ public class NameColorCommand implements CommandExecutor {
     }
 
     @NotNull
-    private static Component deserialize(@NotNull final String configKey, @NotNull final Function<String, String> stringMapper) {
+    protected static Component deserialize(@NotNull final String configKey, @NotNull final Function<String, String> stringMapper) {
         return LegacyComponentSerializer.legacyAmpersand().deserialize(stringMapper.apply(commandText(configKey)));
     }
 

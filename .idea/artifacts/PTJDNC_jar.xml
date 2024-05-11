@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PTJDNC:jar">
+    <output-path>$PROJECT_DIR$/../1.19.4 testing/plugins</output-path>
+    <root id="archive" name="PTJDNC.jar">
+      <element id="module-output" name="PTJDNC" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/bytebuddy/byte-buddy/1.14.1/byte-buddy-1.14.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.9.19/aspectjrt-1.9.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jcabi/jcabi-aspects/0.25.1/jcabi-aspects-0.25.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/objenesis/objenesis/3.3/objenesis-3.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/bytebuddy/byte-buddy-agent/1.14.1/byte-buddy-agent-1.14.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mockito/mockito-core/5.2.0/mockito-core-5.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jcabi/jcabi-log/0.23.0/jcabi-log-0.23.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.8.0-beta4/slf4j-api-1.8.0-beta4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
